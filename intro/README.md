@@ -63,7 +63,7 @@ After solving the model, you can check some of its statistics. For example, it's
 </details>
 
 ### Exercise 6: Setting emphasis modes
-s
+
 Optimization solvers are very complex, full of interacting components focusing on different parts of the solving process. While one instance might benefit heavily from presolving (essentially, ways of simplifying the problem), there might be another for which heuristics (methods to generate feasible solutions) help a lot.
 
 Most solvers allow users to change the focus of its solving, so if you know characteristics of your instance, then you might hint that to the solver.  
