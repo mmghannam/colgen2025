@@ -7,4 +7,3 @@ This session is organized in a series of exercises that will guide you towards i
 If you're already familiar with basic modeling in PySCIPOpt, you can go ahead and start going over the [`README`](bnp/README.md) in the [bnp](bnp) folder. If this is your first time using PySCIPOpt/GurobiPy/XpressPy, then we suggest giving a quick look at either the [intro](intro), and/or the [modeling](modeling) folders. The former goes over model creation, how to add variables and constraints. The latter asks you to implement a knapsack problem, along with some other variants. In both cases, the `README`'s contain information and hints on how to proceed.
 
 We sincerely hope you enjoy, and don't be afraid to ask for help!
-ga
