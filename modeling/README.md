@@ -1,6 +1,6 @@
 ### The Knapsack Problem 
 
-In this exercise, you will be asked to implement several variants of the famous Knapsack problem.
+In this exercise, you will be asked to implement several variants of the famous Knapsack problem in [knapsack.py](knapsack.py).
 
 The most popular variant of this problem is the $0-1$ knapsack, where one needs to decide which items to put into a knapsack/bag.
 These items both have a weight and a value, and thus the objective is to maximize the total value we bring, keeping in mind
@@ -30,7 +30,7 @@ Here are some examples where knapsack could be applied:
 Let us start with a simplified version of the classical knapsack, where instead of choosing which items to pick, we must choose which amount to pick.
 Mathematically, the variable bounds go from $x_i \in \lbrace 0,1 \rbrace$ to $0 \leq x_i \leq 1$.
 
-**Your task:** Formulate the problem described above with continuous variables 
+**Your task:** Formulate the problem described above with continuous variables in [knapsack.py](knapsack.py), method `linear_knapsack()`.
 
 <details>
     <summary>Hint 1</summary>
@@ -40,7 +40,7 @@ Mathematically, the variable bounds go from $x_i \in \lbrace 0,1 \rbrace$ to $0 
 #### Exercise 2: 0-1 Knapsack problem
 In many scenarios, we are more interested in the binary variant of the knapsack problem.
 
-**Your task:** Enforce integrality on the variables.
+**Your task:** Enforce integrality on the variables, in the method `binary_knapsack()`.
 
 <details>
     <summary>Hint 1</summary>
@@ -48,12 +48,12 @@ In many scenarios, we are more interested in the binary variant of the knapsack 
 </details>
 
 #### Exercise 3: Allow many items
-**Your task:** Allow the possibility for choosing multiple copies of the same item.
+**Your task:** Allow the possibility for choosing multiple copies of the same item, in the method `integer_knapsack()`.
 
 <details>
     <summary>Hint 1</summary>
-    Instead of the variables being binary, they can just be integer.
+    Instead of the variables being binary, they can just be integer. 
 </details>
 
 #### Exercise 4: Max `n` items in the knapsack
-**Your task:** Force the solution to have at most `n` items.
+**Your task:** Force the solution to have at most `n` items, in the method `limited_knapsack()`.
