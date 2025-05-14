@@ -1,6 +1,7 @@
 Hello, and welcome to the practical session of the Column Generation School 2025! 
 
 > You will need PySCIPOpt in order to complete the exercises. If you haven't already, the easiest way to install it is via pip. Open your terminal and type `pip install pyscipopt`, which installs PySCIPOpt's latest version (at the time of writing, 5.5.0), and numpy (a dependency for matrix operations).
+> You will also need pytest to run the tests. You can install it with `pip install pytest`, and run a specific test with `pytest <test_name>`.
 
 This session is organized in a series of exercises that will guide you towards implementing your own Branch-and-Price solver for the bin packing problem. After these, some self-paced bonus exercises give you the extra challenge of adding various speedups to the more basic approach.
 
