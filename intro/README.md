@@ -1,14 +1,14 @@
-## 00. Introduction to PySCIPOpt
+## Introduction to PySCIPOpt
 
 Let's get started with the first exercise 🚀
 
 ### Exercise 1: Print SCIP version used
-Go to [00_intro/print_version.py](print_version.py) and complete the TODOs.
+Go to [intro/print_version.py](print_version.py) and complete the TODOs.
 You can look for the method to use in the [PySCIPOpt documentation](https://pyscipopt.readthedocs.io).
 
 
 ### Exercise 2: Create your first SCIP model
-Go to [00_intro/first_model.py](first_model.py) and implement the following model:
+Go to [intro/first_model.py](first_model.py) and implement the following model:
 
 $$
 \begin{align*}
@@ -73,3 +73,5 @@ Most solvers allow users to change the focus of its solving, so if you know char
 ### Outro
 If you've reached this far, congratulations!🎉 
 By now, you should be able to create a basic model, query it, and alter SCIP's solving process. 
+
+Checkout the next [section](modeling/README.md) to test your knowledge by solving multiple variants of the knapsack problem.
