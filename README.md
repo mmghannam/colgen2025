@@ -12,6 +12,16 @@ To install them, run this in your terminal:
 pip install pyscipopt pytest
 ```
 
+Note that some Ubuntu versions do not allow you to install pip packages globally. The proper way to use it is to create a virtual environment, activate it, and then install the packages in there with the following commands:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install pyscipopt pytest
+```
+
+For additional installation options, we direct you to the PySCIPOpt repo: [INSTALL.md](https://github.com/scipopt/PySCIPOpt/blob/master/INSTALL.md) 
+
 ### Session Structure
 This session is organized in a series of exercises that will guide you towards implementing your own Branch-and-Price solver for the bin packing problem. After this, some bonus exercises give you the extra challenge of adding various speedups to the more basic approach.
 
