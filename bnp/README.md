@@ -5,7 +5,7 @@ The first two sections will give a light overview of bin packing, both its compa
 
 If you try to run the branch-and-price code in [`main.py`](main.py), you will encounter errors. This is because some code is missing and must be implemented by you. The error messages tell you what you should do. E.g.: "The knapsack solver is not implemented yet" implies that you should implement the knapsack solver.
 
-> Note: If you're not familiar with modeling languages and PySCIPOpt, you may want to take a look at the [`intro`](intro/README.md) and the [`modeling`](modeling/README.md) folders first.
+> Note: If you're not familiar with modeling languages and PySCIPOpt, you may want to take a look at the [`intro`](../intro/README.md) and the [`modeling`](../modeling/README.md) folders first.
 
 ## Section 1. Compact formulation: Modeling with assignments
 The bin packing problem is a classic optimization problem that asks:
@@ -93,8 +93,8 @@ Running the test validates the correctness of the code of this particular exerci
 
 #### Exercise 1: Pricing
 
-**Your task:** Implement the knapsack pricing problem solver (by implementing a MIP) `solve_knapsack` in [`knapsack.py`](knapsack.py).
-To check if your implementation is correct, you can run the [`test_knapsack.py`](test_knapsack.py) file. Make sure to return a tuple where the first entry is the optimal solution value, and the second is a list containing the indices of the items that were chosen. 
+**Your task:** Implement the knapsack pricing problem solver (by implementing a MIP) `solve_knapsack` in [`pricing_knapsack.py`](pricing_knapsack.py).
+To check if your implementation is correct, you can run the [`test_pricing_knapsack.py`](test_pricing_knapsack.py) file. Make sure to return a tuple where the first entry is the optimal solution value, and the second is a list containing the indices of the items that were chosen. 
 
 SCIP can handle pricing internally with the `pricer` plugin. You can see the basic infrastructure in [`pricer.py`](pricer.py). The pricer gets the dual information from the RMP (with `getDualsolLinear`), feeds it into the pricing problem (`pricing_solver`), and decides whether to add the resulting column or not (when checking `if min_redcost < 0`). For the curious, you can see more details in [here](https://www.scipopt.org/doc/html/PRICER.php).
 
