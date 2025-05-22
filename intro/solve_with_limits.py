@@ -3,7 +3,7 @@ def solve_with_limits():
 
     model = Model()
 
-    # TODO: Read the problem roi2alpha3n4
+    # TODO: Read the problem roi2alpha3n4.mps.gz
 
     # TODO: Set the time limit to 20s, the node limit to 15, and a gap limit of 10%
 
