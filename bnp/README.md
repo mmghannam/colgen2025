@@ -50,7 +50,7 @@ where $\mathcal{P}$ is the set of all possible packings of items into bins.
 
 Constraints (2) ensure that each item is packed into exactly one packing. The objective is to minimize the number of packings (bins) used.
 
-This formulation has one problem. The size of the problem grows exponentially with the number of items. Only instances with a very small number of items can be even loaded in memory. Therefore, we attempt to solve it using a branch-and-price algorithm. This formulation and the general structure required for solving this problem can be found in [bnp.py](bnp.py) (but again, it's missing some code snippets you must add).
+This formulation has one problem. The size of the problem grows exponentially with the number of items. Only instances with a very small number of items can be even loaded in memory. Therefore, we attempt to solve it using a branch-and-price algorithm. This formulation and the general structure required for solving this problem can be found in [bnp.py](bnp.py).
 
 ## Section 3. Branch-and-Price Algorithm
 In this section, we will first discuss how to solve the linear relaxation of the problem using column generation. Then, we will discuss how to handle branching decisions and infeasibility.
@@ -70,7 +70,7 @@ The generic algorithm goes like this:
 
 > Column generation is a method for solving linear programs. Branch and Price is about using Branch and Bound, where the linear relaxation of each node is solved with column generation.
 
-Usually, the column  added to the RMP is the one with the most negative reduced cost, as it is the one that locally improves the solution the most (recall that we are solving an LP). We also need to ensure that the resulting column satisfies the constraints of the compact formulation - it should not exceed the bin capacity. So the column-generating problem should be something the formulation below.
+Usually, the column added to the RMP is the one with the most negative reduced cost, as it is the one that locally improves the solution the most (recall that we are solving an LP). We also need to ensure that the resulting column satisfies the constraints of the compact formulation - it should not exceed the bin capacity. So the column-generating problem should be something the formulation below.
 
 $$
 \begin{align*}
@@ -91,7 +91,7 @@ $\text{minimize} \hspace{0.5em} 1 - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \
 To reduce the complexity of the code, each of the following exercises is accompanied by a test.
 Running the test validates the correctness of the code of this particular exercise.
 
-#### Exercise 1: Pricing
+#### <span style="color:orange"> **Exercise 1: Pricing** </span>
 
 **Your task:** Implement the knapsack pricing problem solver (by implementing a MIP) `solve_knapsack` in [`pricing_knapsack.py`](pricing_knapsack.py).
 To check if your implementation is correct, you can run the [`test_pricing_knapsack.py`](test_pricing_knapsack.py) file. Make sure to return a tuple where the first entry is the optimal solution value, and the second is a list containing the indices of the items that were chosen. 
@@ -120,7 +120,7 @@ Let's compute the value of implicit pair variables $r_{ij}$ for all pairs of ite
 The value of $r_{ij}$ is the sum of the values of all packing variables $z_p$ that contain both items $i$ and $j$.
 From this, we can find a fractional pair of items, i.e., a pair of items $i$ and $j$ such that $r_{ij}$ is fractional.
 
-Let us look at the example used in [`test_fractional_pairs`](test_fractional_pairs.py). There are $3$ packings, $a$, $b$, and $c$, each valued at $0.5$ in the optimal LP solution. Packing $a$ contains items $0,1,2$, which means that the pairs of items to consider in this packing are ${(0,1), (0,2), (1,2)}$, and each appears $0.5$ times. Since pair $(1,2)$ otherwise only appears in packing $c$, this pair shows up $0.5+0.5=1$ times, and is thus not a fractional pair. However, since pairs $(0,1)$ and $(0,2)$ appear in all three patterns, they both sum up to $0.5+0.5+0.5=1.5$, a fractional value. So, in this solution, $(0,1)$ and $(0,2)$ are the fractional pairs.
+Let us look at the second example used in [`test_fractional_pairs`](test_fractional_pairs.py). There are $3$ packings, $a$, $b$, and $c$, each valued at $0.5$ in the optimal LP solution. Packing $a$ contains items $0,1,2$, which means that the pairs of items to consider in this packing are ${(0,1), (0,2), (1,2)}$, and each appears $0.5$ times. Since pair $(1,2)$ otherwise only appears in packing $c$, this pair shows up $0.5+0.5=1$ times, and is thus not a fractional pair. However, since pairs $(0,1)$ and $(0,2)$ appear in all three patterns, they both sum up to $0.5+0.5+0.5=1.5$, a fractional value. So, in this solution, $(0,1)$ and $(0,2)$ are the fractional pairs.
 
 We then use one of these fractional pairs to create the branching constraints. For simplicity, we're choosing the first one. We then create two child nodes, one where the two items in the fractional pair must be together (in the same bin) and one where they must be apart (in different bins). See the diagram below for a visual understanding of this logic, where item pair (yellow, green) was identified as a fractional pair.
 
@@ -129,15 +129,15 @@ We then use one of these fractional pairs to create the branching constraints. F
 </p>
 
 
-#### Exercise 2: Finding Fractional Pairs
+#### <span style="color:orange"> **Exercise 2: Finding Fractional Pairs** </span>
 **Your task:** Go to `ryan_foster.py` and fill in the missing implementation of the `all_fractional_pairs` function.
 This function should return a list of all fractional pairs of items (see above for a definition of a fractional pair).
 You can test your implementation by running the [`test_fractional_pairs.py`](test_fractional_pairs.py) file.
 
-#### Exercise 3: Branching
-**Your task:** Fill in the missing pieces in [`ryan_foster.py`](ryan_foster.py) (marked with `?`) that save the branching decisions at the child nodes. Recall that the child nodes need to respect the branching decisions of the parent (saved at `parent_together` and `parent_apart`) and add the new pair (`chosen_pair`) either to the together set or to the apart set.
+#### <span style="color:orange"> **Exercise 3: Branching** </span>
+**Your task:** Fill in the missing pieces in [`ryan_foster.py`](ryan_foster.py) (marked with `?`) that save the branching decisions at the child nodes. Recall that the child nodes need to respect the branching decisions of the parent, and add the new pair (`chosen_pair`) either to the together set or to the apart set. The decisions are stored in a `branching_decisions` dictionary, with node id's as keys, and branching decisions as items. To get the current branching decisions, you will need to get the current node id with `self.model.getCurrentNode().getNumber()`.
 
-#### Exercise 4: Handling Branching Decisions in Pricing
+#### <span style="color:orange"> **Exercise 4: Handling Branching Decisions in Pricing** </span>
 **Your task:** Enforce the branching decisions in the pricing problem by implementing the `solve_knapsack_with_constraints` function in [`knapsack.py`](knapsack.py). You can start
 by copying the `solve_knapsack` function and modifying it by adding the necessary constraints. 
 Note that the apart and together constraints don't forbid both items from being absent from the packing.

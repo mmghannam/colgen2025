@@ -57,4 +57,4 @@ In many scenarios, we are more interested in the binary variant of the knapsack 
 </details>
 
 #### Exercise 4: Max `n` items in the knapsack
-**Your task:** Force the solution to have at most `n` items, in the method `limited_knapsack()`.
+**Your task:** Force the solution from integer knapsack to have at most `n` items, in the method `limited_knapsack()`.
