@@ -162,7 +162,15 @@ As the objective function of the RMP always takes integer values, you can inform
 
 Column generation can suffer from convergence issues. One of the most famous is known as the *yo-yo* effect, where the dual values change drastically from one iteration to the other. This is undesirable, since it tends to lead to more pricing iterations.
 
-Your first task is to plot the evolution of the dual values and see their behavior at the root node.
+Your first task is to plot the evolution of the dual values and see their behavior at the root node. 
+
+<details>
+  <summary>Hint</summary>
+  You can store the dual values inside a <code>data</code> dictionary of the <code>pricer</code> object.
+  The dictionary can be created in <a href="bnp.py">bnp.py</a> after the pricer is created, as shown here:
+  <code>pricer.data = { "duals": {c.name: [] for c in model.getConss()} }</code>.
+  Then, it is a matter of collecting the dual values appropriately.
+</details>
 
 The *yo-yo* effect can be minimized by techniques such as dual stabilization. One way to do this is by smoothing the dual variables. Rather than using the optimal dual values, use a convex combination of these and the optimal dual solution of the previous iteration instead.
 
